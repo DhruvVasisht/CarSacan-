@@ -10,22 +10,24 @@ const ViewTask = lazy(()=>import("./pages/ViewTask"))
 
 const App = () => {
   return (
-    // <Router>
-    //    <Header/> 
-    //   <SidePanel/>
-    //   <Suspense fallback={<Loader />}>
-    //     <Routes>
-    //       {/* <Route path='/' element={<AddTask />} />   */}
-    //        <Route path='/view' element={<ViewTask />} />
-    //     </Routes>
-    //   </Suspense>
-    // </Router>
-
-    <Routes>
+    <>
+       {/* <Header/>  */}
       <SidePanel/>
-      <Route path ="/" element={<AddTask/>} />
-      <Route path ="/view" element={<ViewTask/>} />
-    </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path='/add-task' element={<AddTask />} />  
+           <Route path='/view-task' element={<ViewTask />} />
+        </Routes>
+      </Suspense>
+      </>
+   
+    
+
+    // <Routes>
+    //   <SidePanel/>
+    //   <Route path ="/" element={<AddTask/>} />
+    //   <Route path ="/view" element={<ViewTask/>} />
+    // </Routes>
 
   );
 }
