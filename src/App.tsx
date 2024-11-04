@@ -1,24 +1,32 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Router, Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Loader from './components/Loader';
 import SidePanel from './components/SidePanel';
+import Header from './components/Header';
 
 
-// const AddTask = lazy(()=>import("./pages/AddTask"))
-// const ViewTask = lazy(()=>import("./pages/ViewTask"))
+const AddTask = lazy(()=>import("./pages/AddTask"))
+const ViewTask = lazy(()=>import("./pages/ViewTask"))
 
 const App = () => {
   return (
-    <Router>
-      {/* <Header /> */}
+    // <Router>
+    //    <Header/> 
+    //   <SidePanel/>
+    //   <Suspense fallback={<Loader />}>
+    //     <Routes>
+    //       {/* <Route path='/' element={<AddTask />} />   */}
+    //        <Route path='/view' element={<ViewTask />} />
+    //     </Routes>
+    //   </Suspense>
+    // </Router>
+
+    <Routes>
       <SidePanel/>
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          {/* <Route path='/' element={<AddTask />} />   */}
-          {/* <Route path='/view' element={<ViewTask />} /> */}
-        </Routes>
-      </Suspense>
-    </Router>
+      <Route path ="/" element={<AddTask/>} />
+      <Route path ="/view" element={<ViewTask/>} />
+    </Routes>
+
   );
 }
 

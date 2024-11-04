@@ -10,7 +10,7 @@ import {
   MenuItem,
   Button,
 } from "@mui/material";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import LocalizationService from "../utils/store";
 
 const AddTask = () => {
@@ -22,13 +22,8 @@ const AddTask = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const taskData = [{ name, dateOfBirth, gender, city }];
-    // const existingDataString = localStorage.getItem("taskData1");
-    // const existingData = existingDataString && JSON.parse(existingDataString);
-
-    // // Ensure that `existingData` is an array before adding new values
-    // const updatedData = Array.isArray(existingData) ? [...existingData, ...taskData] : taskData;
     LocalizationService({ key: "taskData1", value: taskData });
-    // localStorage.setItem("taskData1", JSON.stringify(updatedData));
+   
   };
 
   return (
