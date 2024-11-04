@@ -8,7 +8,9 @@ declare global {
       city: string;
     }
   
-    interface AddTaskErrors {
+    type AddTaskErrors = {
       gender: boolean;
     }
+
+   
   }
