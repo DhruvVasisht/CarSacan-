@@ -12,6 +12,8 @@ import {
 } from "@mui/material";
 import { FormEvent, useState } from "react";
 import LocalizationService from "../utils/store";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddTask = () => {
   const [name, setName] = useState("");
@@ -23,7 +25,11 @@ const AddTask = () => {
     e.preventDefault();
     const taskData = [{ name, dateOfBirth, gender, city }];
     LocalizationService({ key: "taskData1", value: taskData });
-   
+    toast.success("Task added successfully!");
+    setName("");
+    setDateOfBirth("");
+    setGender("");
+    setCity("");
   };
 
   return (
@@ -92,6 +98,7 @@ const AddTask = () => {
           Submit
         </Button>
       </form>
+      <ToastContainer position="top-center" autoClose={2000} hideProgressBar />
     </Container>
   );
 };

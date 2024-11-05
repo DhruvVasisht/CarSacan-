@@ -3,25 +3,24 @@ import { extendTheme } from '@mui/material/styles';
 import { AppProvider, Navigation, Router } from '@toolpad/core/AppProvider';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import AddTask from '../pages/AddTask';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { Outlet } from 'react-router-dom';
+import AddCommentIcon from '@mui/icons-material/AddComment';
+import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewTask from '../pages/ViewTask';
+import { Button,Stack } from '@mui/material';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 
 const NAVIGATION: Navigation = [
   {
     kind: 'page',
     segment: 'add-task',
     title: 'Add Task',
-    path: '/',
-    icon: <DashboardIcon />,
+    icon: <AddCommentIcon />,
   },
   {
     kind: 'page',
     segment: 'view-task',
     title: 'View Task',
-    path: '/view',
-    icon: <ShoppingCartIcon />,
+    icon: <ViewListIcon />,
   }
 ];
 
@@ -58,8 +57,6 @@ const DashboardLayoutBasic = (props: any) => {
   const router = useDemoRouter('add-task');
   const demoWindow = window ? window() : undefined;
 
-  console.log(router.pathname)
-  // Function to render content based on current path
   const renderContent = () => {
     switch (router.pathname) {
       case '/add-task':
@@ -79,6 +76,13 @@ const DashboardLayoutBasic = (props: any) => {
       window={demoWindow}
     >
       <DashboardLayout>
+        <Stack direction="row" spacing={1} alignItems="center" justifyContent="flex-end" sx={{ p: 1 }}>
+          <Button
+            variant="outlined"
+            startIcon={<ChatBubbleOutlineIcon />}>
+            Comment
+          </Button>
+        </Stack>
         {renderContent()}
       </DashboardLayout>
     </AppProvider>
